@@ -6,6 +6,467 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>chào cả nhà</h1>
+    <p>Lab1: Domain Name System (DNS) hay máy chủ DNS đệ quy là một phần thiết yếu của internet, nó cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền. Nói cách khác, DNS giúp tìm được địa chỉ của URL với 1 IP tương ứng.
+
+        Các dịch vụ DNS mặc định được cung cấp bởi các ISP thường chậm và không an toàn, hầu hết mọi người đều dùng của các nhà cung cấp khác như OpenDNS (208.67.222.222), Comodo DNS (8.26.56.26) và Google (8.8.8.8) để tăng tốc Internet.
+        
+        Lab2: hiện tại có rất nhiều dịch vụ cung cấp tên miền miễn phí, vd như chính blogspot này, hoặc InfinityFree.net, Sites.Google.com, Hostinger.com, hỗ trợ lẫn trả phí và có phí, tuy nhiên vì miễn phí, nên các trang này vẫn có 1 số bất lợi
+        
+        Lab3: để trang web có chất lượng tốt nhất về tốc độ, thẩm mỹ, và ổn định hơn, thì ta cần đăng kí các dịch vụ cung cấp tên miền trả phí. 1 số website cung cấp dịch vụ: như hầu hết các website ở trên, nếu chuyển sang chế độ premium qua trả phí, thì sẽ được mở khóa nhiều lợi ích khác cho trang web. InfinityFree.net, Hostinger.com
+        
+        Lab4: Web server" có thể là phần cứng hoặc phần mềm, hoặc cả hai.
+        Ở khía cạnh phần cứng, một web server là một máy tính lưu trữ các file thành phần của một website (ví dụ: các tài liệu HTML, các file ảnh, CSS và các file JavaScript) và có thể phân phát chúng tới thiết bị của người dùng cuối (end-user). Nó kết nối tới mạng Internet và có thể truy cập tới thông qua một tên miền giống như mozilla.org.
+        Ở khía cạnh phần mềm, một web server bao gồm một số phần để điều khiển cách người sử dụng web truy cập tới các file được lưu trữ trên một HTTP server(máy chủ HTTP). Một HTTP server là một phần mềm hiểu được các URL (các địa chỉ web) và HTTP (giao thức trình duyệt của bạn sử dụng để xem các trang web).
+        Ở mức cơ bản nhất, bất cứ khi nào một trình duyệt cần một file được lưu trữ trên một web server, trình duyệt request (yêu cầu) file đó thông qua HTTP. Khi một request tới đúng web server (phần cứng), HTTP server (phần mềm) gửi tài liệu được yêu cầu trở lại, cũng thông qua HTTP.
+        
+        Lab5: Phần mềm mã nguồn mở miễn phí XAMPP cung cấp các thành phần cần thiết cho các nhà thiết kế và phát triển web chạy các phần mềm dựa trên PHP như WordPress, Drupal, Joomla, ... trên các nền tảng Windows, Mac OS X và Linux. 
+        download xampp
+        Sau khi cài đặt thành công, để chạy XAMPP, vào C:\\xampp, bấm chuột phải vào tập tin xampp-control.exe, chọn Run as Administrator. Tại hàng Apache, bấm nút Start.
+        
+        Chương trình Apache của XAMPP hay xung đột cổng (port) với các chương trình khác, vì vậy, nếu có lỗi, để ý cái thông báo lỗi của nó, lên google để tìm cách sửa lỗi. Ví dụ, máy này đang chạy vmware-hostd.exe, nên Apache không chạy được, phải vào Task Manager để tắt cái process vmware-hostd.exe đi.
+        
+        Để kiểm tra Apache đã chạy được chưa? Mở trình duyệt, tại thanh địa chỉ, nhập vào http://localhost hoặc http://127.0.0.1. Nếu trình duyệt xuất hiện trang dashboard của XAMPP là được.
+        
+        Đôi khi, Apache cũng không thể Start được, do liên quan đến mục chọn trong cột Service trên cửa sổ XAMPP Control Panel, đọc thêm về nó trên Internet.
+        
+        Để đổi cổng của Apache từ 80 thành 8888, tại cửa sổ XAMPP Control Panel, hàng Apache, bấm vào nút Config, chọn Apache(httpd.conf), tìm tới hàng Listen, đổi giá trị 80 thành 8888, lưu lại, Stop và Start Apache.
+        
+        Các thư mục và tập tin của “tên miền” localhost được chứa trong C:\xampp. Sẽ tìm hiểu kĩ hơn về localhost ở các phần sau.
+        
+        Thư mục C:\xampp\htdocs chứa toàn bộ các nội dung sẽ được hiển thị ra ngoài, đây chính là DocumentRoot hay WebRoot.
+        
+        Tạo một thư mục (ví dụ test) trong C:\xampp\htdocs, trong thư mục, tạo tập tin index.html, nhập nội dung bất kì cho tập tin index.html, ra ngoài trình duyệt, truy cập vào thư mục test để xem kết quả (http://localhost/test hoặc http://localhost/test/index.html hoặc http://localhost:8888/test hoặc http://localhost:8888/test/index.html).
+        
+        Cấu trúc chung của một URL có dạng sau: Scheme://domain:port/path?query_string#fragment_id
+        
+        Ở đây, mới quan tâm tới Scheme://domain:port/path, ví dụ http://localhost:8888/test.
+        
+        Quan sát sẽ thấy, tại trình duyệt, khi nhập vào thanh địa chỉ một URL, kết thúc là một thư mục (ví dụ, http://localhost:8888/test), Web Server sẽ tìm trong thư mục đó xem có tập tin index không? Nếu có, nó sẽ gửi trang index.html cho trình duyệt, nếu không nó sẽ gửi toàn bộ nội dung của thư mục.
+        
+        Xem thêm về XAMPP tại wiki: https://en.wikipedia.org/wiki/XAMPP
+        
+        Các kí hiệu của XAMPP có nghĩa là:
+        
+        - X: viết tắt của Linux, Windows, Solaris và MacOS (cross-platform: đa nền tảng); XAMPP có thể chạy trên các hệ điều hành này.
+        
+        - A: viết tắt của Apache, phần mềm Web Server, là phần mềm mã nguồn mở, miễn phí, xử lý các yêu cầu gửi tới máy chủ dựa trên giao thức HTTP.
+        
+        - M: viết tắt của MariaDB (tên cũ là mySQL); hệ quản trị cơ sở dữ liệu mã nguồn mở, miễn phí.
+        
+        - P: viết tắt của PHP; biên dịch mã nguồn PHP
+        
+        - P: viết tắt của Perl; biên dịch mã nguồn Perl
+        
+        Các phần mềm có chức năng tương tự như XAMPP gồm:
+        
+        - WAMP: Windows, Apache, Mysql, PHP
+        
+        - LAMP: Linux, Apache, Mysql, PHP
+        
+        - MAMP: Macintosh, Apache, Mysql, PHP
+        
+        - WIMP: Windows, IIS, Mysql, PHP
+        
+        Mở thử ứng dụng openemr: chép thư mục openemr vào trong thư mục C:\xampp\htdocs, mở trình duyệt, nhập vào đường dẫn sau: localhost:8888/openemr, để xem kết quả.
+        
+        Vậy là đã dựng được một Web Server và mở được ứng dụng openemr (mặc dù chưa mở được trang giao diện, do phải cài đặt thêm một số thứ).
+        
+        Trên đây là những kiến thức cơ bản về XAMPP, tạm đủ để làm các bài thực hành liên quan đến lập trình phía server như PHP, mySQL, PHP framework. Tuy nhiên, nếu rảnh nên làm thêm các cấu hình khó hơn một chút liên quan đến XAMPP sau:
+        
+        - Cài đặt XAMPP vào ổ đĩa bất kì (khác ổ đĩa C:\), để không phải lo mất dữ liệu XAMPP, khi hệ điều hành bị trục trặc.
+        
+        - Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd-vhosts.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example.
+        
+        - Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd-vhosts.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example:8888.
+        
+        - Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example.
+        
+        - Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example:8888.
+        
+        - Tạo thư mục WEBROOT trong ổ đĩa D:\ (nghĩa là thư mục WEBROOT đóng vai trò là htdocs), chuyển các dự án từ XAMPP\htdocs vào trong thư mục WEBROOT. Mục đích là để nếu phải cài đặt lại XAMPP thì các dự án đã tạo trước đó không bị ảnh hưởng.
+        
+        Trong cấu hình XAMPP có hai việc nên để ý là:
+        
+        Một là gắn tên miền vào một thư mục, đây là đoạn lệnh (trong tập tin httpd-vhosts.conf hoặc httpd.conf) :
+        
+        <VirtualHost *:80>
+            DocumentRoot "D:/WEBROOT/bansach"
+            ServerName local.bansach
+        </VirtualHost>
+        
+        Hai là gắn tên miền vào một địa chỉ IP, đây là đoạn lệnh (trong tập tin C:\Windows\System32\drivers\etc\hosts):
+        
+        Lab6: Hosting hiểu nôm na là tạo một thư mục và đặt trang web vào trong đó. Thư mục có thể tự tạo ra trên máy web server cục bộ, hoặc thuê từ một máy khác trên Internet. Sau đó liên kết thư mục chứa trang web và tên miền đã đăng kí trên DNS, để khi người dùng gõ tên trang web vào trình duyệt thì sẽ hiển thị được trang web.
+        Yêu cầu 1 Điền các thông tin cơ bản web server sẽ dựng?
+        
+        – Thông tin phần cứng (CPU, đĩa cứng, RAM):
+        
+        – Hệ điều hành:
+        
+        – Phần mềm web server:
+        
+        – Nội dung website: (tạo sẵn một website  đơn giản chỉ gồm một trang web, ví dụ index.html)
+        
+        Yêu cầu 2. Cài đặt XAMPP ở chế độ mặc định vào ổ đĩa C:\.
+        
+        Cấu hình để người dùng có thể truy cập tới trang web bằng http://localhost/mywebsite hoặc http://127.0.0.1/mywebsite hoặc http://localhost/mywebsite/index.html
+        
+        Khi chạy Apache thường có thông báo lỗi như sau:
+        
+        5:54:31 PM  [Apache]    Problem detected!
+        5:54:31 PM  [Apache]    Port 80 in use by "Unable to open process" with PID 4!
+        5:54:31 PM  [Apache]    Apache WILL NOT start without the configured ports free!
+        5:54:31 PM  [Apache]    You need to uninstall/disable/reconfigure the blocking application
+        5:54:31 PM  [Apache]    or reconfigure Apache and the Control Panel to listen on a different port
+        
+        Nguyên nhân: chương trình hoặc tiến trình nào đó đã chiếm cổng 80 và/hoặc cổng 443
+        
+        Cách sửa:
+        
+        – Cách 1: đổi cổng của XAMPP thành giá trị khác 80 và/hoặc khác 443
+        
+        – Cách 2: tắt/gỡ bỏ tiến trình đang chiếm cổng 80 và/hoặc 443
+        
+        Trước khi thực hiện sửa lỗi, cần hiểu một chút về khái niệm cổng (port).
+        
+        Như đã biết, khi người dùng nhập tên trang web (URL) vào trình duyệt, máy tính người dùng sẽ thực hiện việc chuyển tên trang web thành địa chỉ IP (của máy web server đang chứa trang web). Với địa chỉ IP này, trình duyệt đã có thể gửi yêu cầu tới web server để lấy trang web về.
+        
+        Tuy nhiên, để ý là máy web server thường xử lý đồng thời cho nhiều ứng dụng khác nhau (ví dụ web, email, FTP). Như vậy, để biết được gói tin từ client vừa gửi đến sẽ được chuyển cho ứng dụng nào xử lý thì web server sử dụng khái niệm cổng (port).
+        
+        
+        Xem lại cấu trúc một gói tin gửi từ client lên web server:
+        
+        
+        
+        Ví dụ,
+        
+        
+        
+        
+        Ví dụ, với gói tin gửi từ client đến server, nếu Dest Port có giá trị là 80 thì nó sẽ được gửi cho chương trình Apache để xử lý. Ngược lại, khi client nhận được gói tin từ web server trả về, tùy theo giá trị trong Dest Port (ở ví dụ trên là 50051), máy client sẽ chuyển gói tin nó vừa nhận cho đúng chương trình để xử lý (ví dụ tab nào đó của chrome).
+        
+        Giá trị của cổng được chia thành ba loại: well-known, registered và public/private.
+        
+        – Well-known là các cổng có giá trị từ 0 tới 1023, dùng cho các ứng dụng phổ biến. Ví dụ: FTP:TCP sử dụng port 20 cho truyền dữ liệu (data) và port 21 cho điều khiển (control); TFTP:UDP sử dụng port 69; SMTP:TCP sử dụng port 25; POP3:TCP sử dụng port 110; HTTP:TCP sử dụng port 80; Telnet: TCP sử dụng port 23; DNS:TCP và UDP sử dụng port 53; SNMP: UDP sử dụng port 161.
+        
+        – Registered là các port có giá trị từ 1024 tới 49151, người dùng muốn sử dụng các port này, cần phải đăng kí với tổ chức IANA.
+        
+        – Public/private là các port có giá trị từ 49152 tới 65535, người dùng được phép sử dụng tự do các port này mà không cần đăng kí.
+        
+        XAMPP đang đóng vai trò là web server, vì vậy nó cũng sẽ cần tạo ra một số cổng để chờ các giao tiếp từ web client. Ví dụ, cổng 80 để làm việc với các giao tiếp có sử dụng giao thức HTTP, cổng 443 để làm việc với các giao tiếp có sử dụng giao thức HTTPS.
+        
+        Tuy nhiên, trên máy tính lại đang có một số chương trình nào đó đã tạo ra và sử dụng các cổng 80 và 443 rồi, trong khi XAMPP lại được cấu hình mặc định là sẽ tạo ra và sử dụng cổng 80 và 443. Điều này tạo ra lỗi, làm cho XAMPP không chạy được dịch vụ Apache.
+        
+        Cách sửa 1
+        
+        Cách sửa đơn giản nhất là cấu hình để dịch vụ Apache của XAMPP sẽ tạo và sử dụng trên các cổng khác.
+        
+        Ví dụ HTTP sẽ sử dụng cổng 8080, hoặc 8888, hoặc một số hợp lệ tùy ý. Cách làm: trong cửa sổ XAMPP Control Panel, bấm nút Config ở hàng Apache, mở tập tin httpd.conf , tìm tới dòng có nội dung Listen 80, đổi giá trị 80 thành giá trị mới (ví dụ 8080), lưu tập tin httpd.conf, bấm nút Start để khởi chạy dịch vụ Apache. Nếu chạy được, quan sát sẽ thấy giá trị cổng đã bị thay đổi.
+        
+        Ví dụ HTTPS sẽ sử dụng cổng 4433, hoặc một số hợp lệ tùy ý. Cách làm: trong cửa sổ XAMPP Control Panel, bấm nút Config ở hàng Apache, mở tập tin httpd-ssl.conf , tìm tới dòng có nội dung Listen 443, đổi giá trị 443 thành giá trị mới (ví dụ 4433), lưu tập tin httpd-ssl.conf, bấm nút Start để khởi chạy dịch vụ Apache. Nếu chạy được, quan sát sẽ thấy giá trị cổng đã bị thay đổi.
+        
+        Tuy nhiên, khi duyệt trang web thì luôn phải có thêm thông tin về cổng trong URL, điều này gây ra một số trở ngại. Ví dụ, http://localhost:8080/mywebsite
+        
+        Cách sửa 2
+        
+        Thực hiện tắt hoặc gỡ bỏ tiến trình đang chiếm cổng 80 và/hoặc 443.
+        
+        Mở cửa sổ dòng lệnh của hệ điều hành Windows (phím cửa sổ + R để mở cửa sổ Run > nhập lệnh cmd; hoặc chạy chương trình Command Prompt). Nhập lệnh netstat –a –b –n –o
+        
+        Lệnh netstat sẽ liệt kê thông tin về các cổng đã được tạo ra trên máy tính. Trong cửa sổ dòng lệnh, gõ lệnh netstat /? để xem các tham số đi kèm. Như ở trường hợp này, tham số –a để hiện tất cả các cổng, –b để hiển thị tên tập tin thực thi ứng với cổng, –n để hiển thị địa chỉ IP và giá trị của cổng, –o để hiển thị định danh của tiến trình (PID) đang sử dụng cổng.
+        
+        Từ thông tin của netstat sẽ xác định được chương trình hoặc tiến trình nào đang sử dụng cổng 80 hoặc/và cổng 443. Sử dụng Task Manager hoặc Services.msc để tắt chương trình hoặc tiến trình.
+        Nếu từ netstat mà không thể biết chính xác được chương trình/tiến trình nào cần tắt thì có thể tắt một số chương trình phổ biến hay sử dụng hai cổng 80 và/hoặc 443 sau: (tắt bằng Task Manager hoặc vào Run gõ services.msc)
+        
+        – World Wide Web Publishing Service (WWW-Publishing Service)
+        
+        – Web Deployment Agent Service
+        
+        – Skype
+        
+        – SQL Server Reporting Service(MSSQLSERVER)
+        
+        – VMware Workstation
+        
+        
+        – IIS
+        
+        Yêu cầu 3. Phân biệt các khái niệm sau:
+        
+        – webpage
+        
+        – website
+        
+        – web application
+        
+        – web app
+        
+        – static webpage
+        
+        – dynamic webpage
+        
+        – static website
+        
+        – dynamic website
+        
+        – SPA
+        
+        Đọc thêm về các khái niệm: Web, WWW, World Wide Web, URL, Internet, Webpage, Website, Web app.
+        
+        http://legiacong.blogspot.com/2018/02/hoc-lam-web-11-meta-chu-thich.html
+        
+        Yêu cầu 3.x1. Thực hiện một số cấu hình căn bản.
+        
+        ­– Trong thư mục htdocs, tạo thư mục mywebsite. Trong thư mục mywebsite tạo tập tin index.html. Trong tập tin index.html, nhập dòng chữ “Tôi là Tèo”.
+        
+        – Mở trình duyệt, nhập đường dẫn http://localhost/mywebsite và http://localhost/mywebsite.index.html để xem kết quả.
+        
+        – Cấu hình để có thể có thể truy cập trang web vừa tạo ở bước trên bằng địa chỉ sau: http://myhost/mywebsite/index.html
+        
+        [Mục đích: để hiểu về cách tạo một website, vai trò của tập tin index.html và cách cấu hình DNS trong tập tin hosts]
+        
+        – Trong thư mục htdocs, tạo thư mục bansach. Trong thư mục bansach tạo tập tin index.html. Trong tập tin index.html, nhập dòng chữ “Tôi là ông bán sách”.
+        
+        – Mở trình duyệt, nhập đường dẫn sau để xem kết quả: http://myhost/bansach/index.html
+        
+        
+        [Mục đích: để hiểu các tạo nhiều website trong web root (htdocs)]
+        
+        Yêu cầu 4. Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd-vhosts.conf, để có thể mở website với URL kiểu như thế này: http://example.local
+        
+        Sau khi cài đặt, thử truy cập tới trang web bằng http://mywebsite.local hoặc http://mywebsite.local/index.html để kiểm tra.
+        
+        Tên miền ảo là tên miền không được đăng kí trên hệ thống quản lý tên miền quốc tế hoặc nội địa, nó chỉ được hiểu trên máy cục bộ. Do vậy có thể tạo một tên miền với tên bất kì.
+        
+        Để tạo ra một tên miền ảo, cần thực hiện hai việc sau:
+        
+        – Một là gắn (hay trỏ) tên miền vào thư mục chứa nội dung website tương ứng, đây là đoạn lệnh (trong tập tin httpd-vhosts.conf hoặc httpd.conf) :
+        
+        <VirtualHost *:80>
+            DocumentRoot "C:\xampp\htdocs\mywebsite"
+            ServerName mywebsite.local
+        </VirtualHost>
+        
+        – Hai là tạo mẩu tin ánh xạ giữa tên miền và địa chỉ IP,  đây là đoạn lệnh (trong tập tin C:\Windows\System32\drivers\etc\hosts):
+        
+        127.0.0.1         mywebsite.local
+        
+        
+        [Ý nghĩa của hai việc trên]
+        
+        Dựa vào thông tin 127.0.0.1   mywebsite.local trong tập tin hosts, khi người dùng nhập đường dẫn mywebsite.local vào trình duyệt, máy tính sẽ gửi một request tới máy 127.0.0.1 với nội dung là “Web server ơi, ông hãy gửi cho tôi nội dung trang web index.html đi?”.
+        
+        
+        Khi Web server nhận được request, nó sẽ dò trong tập tin cấu hình httpd-vhosts.conf hoặc httpd.conf, xem trong các mục VirtualHost có mục nào có tên website (ServerName) là mywebsite.local không? nếu có, thì thư mục để chứa nội dung website đó ở đâu (DocumentRoot)? Sau đó, Web server sẽ vào thư mục của website (ví dụ: C:\xampp\htdocs\mywebsite) lấy nội dung tập tin index.html và gửi về máy người dùng.
+        
+        Yêu cầu 5. Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd-vhosts.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://example.local:8888.
+        
+        Sau khi cài đặt, thử truy cập tới trang web bằng http://mywebsite.local:8888 hoặc http://mywebsite.local:8888/index.html để kiểm tra.
+        
+        [Mục đích để hiểu thêm về việc cấu hình cổng lắng nghe trên hai tập tin httpd.conf và httpd-vhosts.conf]
+        
+        Yêu cầu 6. Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://example.local.
+        
+        Sau khi cài đặt, thử truy cập tới trang web bằng http://mywebsite.local. hoặc http://mywebsite.local/index.html để kiểm tra.
+        
+        [Mục đích để hiểu có thể cấu hình tên miền ảo ở hai nơi khác nhau httpd.conf và httpd-vhosts.conf]
+        
+        Yêu cầu 7. Tạo thư mục WEBROOT trong ổ đĩa D:\ (nghĩa là thư mục WEBROOT đóng vai trò là htdocs), chuyển các dự án từ XAMPP\htdocs vào trong thư mục WEBROOT.
+        
+        Thực hiện cấu hình lại tên miền ảo để có thể truy cập được tới các trang web http://mywebsite.local hoặc http://mywebsite.local/index.html
+        
+        [Mục đích là để nếu phải cài đặt lại XAMPP thì các dự án đã tạo trước đó không bị ảnh hưởng]
+        
+        Yêu cầu 8. Cài đặt WAMP cơ bản và nâng cao.
+        
+        [WampServer is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Alongside, PhpMyAdmin allows you to manage easily your databases.]
+        
+        WAMP = Windows, Apache, Mysql, PHP.
+        
+        Thư mục www trong WAMP có chức năng tương tự như htdocs trong XAMPP.
+        
+        WAMP khởi chạy thành công, thì biểu tượng trong System Tray sẽ có màu xanh (màu đỏ hoặc vàng là bị lỗi).
+        
+        Một số kiến thức cần nắm trong hệ thống WAMP:
+        
+        – Cấu hình cổng HTTP, HTTPS (SSL) ở tập tin nào? Cách làm?
+        
+        – Cấu hình ánh xạ tên miền và địa chỉ IP ở tập tin nào? Cách làm?
+        
+        – Cấu hình tên miền ảo ở tập tin nào? Cách làm?
+        
+        Bài tập:
+        
+        8.1 Cấu hình để người dùng có thể truy cập tới trang web bằng http://localhost/mywebsite hoặc http://127.0.0.1/mywebsite hoặc http://localhost/mywebsite/index.html
+        
+        Cách sửa lỗi do tiến trình khác chiếm cổng 80 của WAMP cũng giống với XAMPP (tắt các tiến trình chiếm cổng 80 bằng Task Manager hoặc vào Run gõ services.msc). Dưới đây là một số tiến trình thường chiếm cổng 80:
+        
+        – World Wide Web Publishing Service (WWW-Publishing Service)
+        
+        – Web Deployment Agent Service
+        
+        – Skype
+        
+        – SQL Server Reporting Service (MSSQLSERVER)
+        
+        – SQL Server VSS Writer
+        
+        – VMware Workstation
+        
+        – IIS
+        
+        8.2. Cấu hình để người dùng có thể truy cập tới trang web bằng http://localhost:8080/mywebsite hoặc http://127.0.0.1:8080/mywebsite hoặc http://localhost:8080/mywebsite/index.html
+        
+        Mở tập tin httpd.conf tại thư mục C:\wamp64\bin\apache\apache2.4.35\conf
+        
+        Sửa thay giá trị cổng của các dòng sau thành 8080,
+        
+        Listen 0.0.0.0:80
+        Listen [::0]:80
+        ServerName localhost:8080
+        
+        Lưu tập tin httpd.conf, bấm chuột trái vào biểu tượng WAMP (trong System tray), chọn Restart All Services để chạy lại các dịch của của WAMP.
+        
+        8.3 Cấu hình tên miền ảo để người dùng có thể truy cập tới trang web bằng http://mywebsite.local
+        
+        Lý do tạo ra tên miền ảo:
+        
+        – Virtual Hosts make URLs cleaner – localhost/mysite vs mysite.local.
+        
+        – Virtual Hosts make permissions easier – restrict access for a single vhost on a local network vs permitting access to all sites on your local network.
+        
+        – Some applications require a “.” in the URL (ahem Magento). While you can setup localhost.com/mysite by editing the Windows hosts file, creating a vhost is a better solution.
+        
+        Cách thực hiện:
+        
+        Tham khảo cách làm ở đây (các làm theo hướng dẫn này để học tiếng Anh chuyên ngành):
+        
+        https://john-dugan.com/wamp-vhost-setup/
+        
+        8.4. Tạo thư mục WEBROOTWAMP trong ổ đĩa D:\ (nghĩa là thư mục WEBROOTWAMP đóng vai trò là www), chuyển các dự án từ WAMP\www vào trong thư mục WEBROOTWAMP. Thực hiện cấu hình lại tên miền ảo để có thể truy cập được tới các trang web http://mywebsite.local hoặc http://mywebsite.local/index.html
+        
+        Đoạn mã cấu hình trong tập tin httpd-vhosts.conf có dạng như sau,
+        
+        <VirtualHost *:80>
+          ServerName mywebsite.local
+          DocumentRoot "D:/WEBROOTWAMP "
+        </VirtualHost>
+        
+        Tuy nhiên, khi kiểm tra trên trình duyệt sẽ có lỗi này,
+        
+        Forbidden
+        You don't have permission to access / on this server.
+        Apache/2.4.35 (Win64) PHP/7.2.10 Server at mywebsite.local Port 80
+        
+        Lỗi trên do người dùng không có quyền truy cập vào thư mục "D:/WEBROOTWAMP "
+        
+        Do vậy, cần thêm đoạn mã phân quyền vào đoạn mã cấu hình VirtualHost.
+        
+        Đoạn mã phân quyền,
+        
+        <Directory "D:/ WEBROOTWAMP /">
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride all
+                Order Deny,Allow
+                Allow from all
+                Require all granted
+          </Directory>
+        
+        Kết quả là,
+        
+        <VirtualHost *:80>
+          ServerName mywebsite.local
+          DocumentRoot "D:/WEBROOTWAMP "
+          <Directory "D:/ WEBROOTWAMP /">
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride all
+                Order Deny,Allow
+                Allow from all
+                Require all granted
+          </Directory>
+        </VirtualHost>
+        
+        Thực hiện Restart All Services của WAMP để xem kết quả.
+        
+        
+        
+        2.3        Các loại hosting phổ biến
+        
+        Ở các phần trên đã thực hiện hosting trên máy cục bộ. Phần này sẽ thực hiện hosting một website lên Internet, để từ đó mọi người trên Internet có thể truy cập được tới website của bạn.
+        
+        Đọc thêm về web hosting tại đây:
+        
+        https://www.website.com/beginnerguide/webhosting/6/1/what-is-web-hosting?.ws
+        
+        Và tại đây:
+        
+        https://www.hostinger.vn/huong-dan/hosting-la-gi-giai-thich-web-hosting-cho-nguoi-moi-bat-dau/
+        
+        Lab 6. Tìm hiểu về các loại hosting sau? Ưu và nhược điểm của mỗi loại?
+        
+        – Shared Hosting
+        
+        – VPS Hosting
+        
+        – Cloud Hosting
+        
+        – WordPress Hosting
+        
+        – Dedicated Server Hosting
+        
+        Lab 7. Tìm hiểu các thông số liên quan đến một web hosting?
+        
+        – Dung lượng lưu trữ (disk space)
+        
+        – Băng thông (bandwidth)
+        
+        – Cơ chế bảo mật, sao lưu và phục hồi dữ liệu
+        
+        – Phần mềm hỗ trợ thao tác với web hosting (upload/download)
+        
+        – Khả năng tương thích với các: CMS, framework, ngôn ngữ lập trình (loại ngôn ngữ, phiên bản)
+        
+        Đọc thêm ở đây:
+        
+        https://www.digistar.vn/web-hosting-la-gi/?gclid=EAIaIQobChMIupCQoK3O4AIVAbaWCh0qmg-REAAYAyAAEgJKYfD_BwE
+        
+        Lab 8. Shared hosting miễn phí
+        
+        Yêu cầu:
+        
+        – Sinh viên thực hiện đăng kí tên miền và chỗ đặt website miễn phí (ví dụ đăng kí tại: https://www.000webhost.com/)
+        
+        [nguyenvanteodl.000webhostapp.com - 5(74!MjJeaYSJUy%2M5P]
+        
+        – Tự tạo một website đơn giản (có thể chỉ gồm một trang index.html với nội dung là một đoạn văn bản)
+        
+        Tham khảo clip sau để thực hiện đưa website lên một shared hosting miễn phí:
+        
+        https://www.youtube.com/watch?v=hOGzvxFv4w8
+        
+        Lab 9. Shared hosting có phí
+        
+        “Shared hosting trả phí” có nhiều thành phần và dịch vụ để cấu hình hơn so với “shared hosting miễn phí”. Tuy nhiên, cách đưa một website lên hosting thì tương tự.
+        
+        Tham khảo một số giao diện,
+        
+        
+        Tiện ích cPanel:
+        
+        
+        
+        Thư mục của một tài khoản (hosting)
+        
+        
+        
+        
+        Nơi chứa nội dung website (MVC):
+        
+        
+        
+        
+        
+        
+        </p>
 </body>
 </html>
