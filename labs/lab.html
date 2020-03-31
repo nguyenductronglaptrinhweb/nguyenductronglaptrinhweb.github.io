@@ -3,9 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>all lab</title>
 </head>
 <body>
-    <p>no something</p>
+    <h1><p>Hello everybody back home <a href="https://nguyenductronglaptrinhweb.github.io/">here </a></p></h1>
+    <h2>Lab 1</h2>
+    <p>Domain Name System (DNS) hay máy chủ DNS đệ quy là một phần thiết yếu của internet, nó cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền. Nói cách khác, DNS giúp tìm được địa chỉ của URL với 1 IP tương ứng.</p>
+    <p>Các dịch vụ DNS mặc định được cung cấp bởi các ISP thường chậm và không an toàn, hầu hết mọi người đều dùng của các nhà cung cấp khác như OpenDNS (208.67.222.222), Comodo DNS (8.26.56.26) và Google (8.8.8.8) để tăng tốc Internet.</p>
+<h2>lab 2</h2>
+<p>hiện tại có rất nhiều dịch vụ cung cấp tên miền miễn phí, vd như blogspot , hoặc InfinityFree.net, Sites.Google.com, Hostinger.com, hỗ trợ lẫn trả phí và có phí, tuy nhiên vì miễn phí, nên các trang này vẫn có 1 số bất lợi</p>
+<h2>lab 3</h2>
+<p>để trang web có chất lượng tốt nhất về tốc độ, thẩm mỹ, và ổn định hơn, thì ta cần đăng kí các dịch vụ cung cấp tên miền trả phí. 1 số website cung cấp dịch vụ: như hầu hết các website ở trên, nếu chuyển sang chế độ premium qua trả phí, thì sẽ được mở khóa nhiều lợi ích khác cho trang web. InfinityFree.net, Hostinger.com</p>
+<h2>lab 4</h2>
+<p>Web server" có thể là phần cứng hoặc phần mềm, hoặc cả hai.</p>
+<ul>
+    <li>Ở khía cạnh phần cứng, một web server là một máy tính lưu trữ các file thành phần của một website (ví dụ: các tài liệu HTML, các file ảnh, CSS và các file JavaScript) và có thể phân phát chúng tới thiết bị của người dùng cuối (end-user). Nó kết nối tới mạng Internet và có thể truy cập tới thông qua một tên miền giống như mozilla.org.</li>
+    <li>Ở khía cạnh phần mềm, một web server bao gồm một số phần để điều khiển cách người sử dụng web truy cập tới các file được lưu trữ trên một HTTP server(máy chủ HTTP). Một HTTP server là một phần mềm hiểu được các URL (các địa chỉ web) và HTTP (giao thức trình duyệt của bạn sử dụng để xem các trang web).</li>
+</ul>
+<p>Ở mức cơ bản nhất, bất cứ khi nào một trình duyệt cần một file được lưu trữ trên một web server, trình duyệt request (yêu cầu) file đó thông qua HTTP. Khi một request tới đúng web server (phần cứng), HTTP server (phần mềm) gửi tài liệu được yêu cầu trở lại, cũng thông qua HTTP.</p>
+<h2>lab 5</h2>
+<p>Phần mềm mã nguồn mở miễn phí XAMPP cung cấp các thành phần cần thiết cho các nhà thiết kế và phát triển web chạy các phần mềm dựa trên PHP như WordPress, Drupal, Joomla, ... trên các nền tảng Windows, Mac OS X và Linux. </p>
+<p>download xampp</p>
+<p>Sau khi cài đặt thành công, để chạy XAMPP, vào C:\\xampp, bấm chuột phải vào tập tin xampp-control.exe, chọn Run as Administrator. Tại hàng Apache, bấm nút Start.<p>
+    
+   <p> Chương trình Apache của XAMPP hay xung đột cổng (port) với các chương trình khác, vì vậy, nếu có lỗi, để ý cái thông báo lỗi của nó, lên google để tìm cách sửa lỗi. Ví dụ, máy này đang chạy vmware-hostd.exe, nên Apache không chạy được, phải vào Task Manager để tắt cái process vmware-hostd.exe đi.</p>
+<p>Để kiểm tra Apache đã chạy được chưa? Mở trình duyệt, tại thanh địa chỉ, nhập vào http://localhost hoặc http://127.0.0.1. Nếu trình duyệt xuất hiện trang dashboard của XAMPP là được.Đôi khi, Apache cũng không thể Start được, do liên quan đến mục chọn trong cột Service trên cửa sổ XAMPP Control Panel, đọc thêm về nó trên Internet.</p>
+<p>Để đổi cổng của Apache từ 80 thành 8888, tại cửa sổ XAMPP Control Panel, hàng Apache, bấm vào nút Config, chọn Apache(httpd.conf), tìm tới hàng Listen, đổi giá trị 80 thành 8888, lưu lại, Stop và Start Apache.</p>
+<p>Các thư mục và tập tin của “tên miền” localhost được chứa trong C:\xampp. Sẽ tìm hiểu kĩ hơn về localhost ở các phần sau.</p>
+<p>Thư mục C:\xampp\htdocs chứa toàn bộ các nội dung sẽ được hiển thị ra ngoài, đây chính là DocumentRoot hay WebRoot.</p>
+<p>Tạo một thư mục (ví dụ test) trong C:\xampp\htdocs, trong thư mục, tạo tập tin index.html, nhập nội dung bất kì cho tập tin index.html, ra ngoài trình duyệt, truy cập vào thư mục test để xem kết quả (http://localhost/test hoặc http://localhost/test/index.html hoặc http://localhost:8888/test hoặc http://localhost:8888/test/index.html)</p>
+<p>Cấu trúc chung của một URL có dạng sau: Scheme://domain:port/path?query_string#fragment_id</p>
+<p>Ở đây, mới quan tâm tới Scheme://domain:port/path, ví dụ http://localhost:8888/test.</p>
+<p>Quan sát sẽ thấy, tại trình duyệt, khi nhập vào thanh địa chỉ một URL, kết thúc là một thư mục (ví dụ, http://localhost:8888/test), Web Server sẽ tìm trong thư mục đó xem có tập tin index không? Nếu có, nó sẽ gửi trang index.html cho trình duyệt, nếu không nó sẽ gửi toàn bộ nội dung của thư mục.</p>
+<p>Xem thêm về XAMPP tại wiki: https://en.wikipedia.org/wiki/XAMPP</p>
+<p>Các kí hiệu của XAMPP có nghĩa là:</p>
+<ol>
+    <li>X: viết tắt của Linux, Windows, Solaris và MacOS (cross-platform: đa nền tảng); XAMPP có thể chạy trên các hệ điều hành này.    </li>
+    <li>A: viết tắt của Apache, phần mềm Web Server, là phần mềm mã nguồn mở, miễn phí, xử lý các yêu cầu gửi tới máy chủ dựa trên giao thức HTTP.</li>
+    <li>M: viết tắt của MariaDB (tên cũ là mySQL); hệ quản trị cơ sở dữ liệu mã nguồn mở, miễn phí.    </li>
+    <li>P: viết tắt của PHP; biên dịch mã nguồn PHP    </li>
+    <li> P: viết tắt của Perl; biên dịch mã nguồn Perl</li>
+</ol>
+ 
+
+<p>-   Các phần mềm có chức năng tương tự như XAMPP gồm:</p>
+<ol>
+    <li> WAMP: Windows, Apache, Mysql, PHP</li>
+    <li> LAMP: Linux, Apache, Mysql, PHP</li>
+    <li>MAMP: Macintosh, Apache, Mysql, PHP</li>
+    <li> WIMP: Windows, IIS, Mysql, PHP</li>
+</ol>
+   <p>  Mở thử ứng dụng openemr: chép thư mục openemr vào trong thư mục C:\xampp\htdocs, mở trình duyệt, nhập vào đường dẫn sau: localhost:8888/openemr, để xem kết quả.</p> 
+    
+    <p>Vậy là đã dựng được một Web Server và mở được ứng dụng openemr (mặc dù chưa mở được trang giao diện, do phải cài đặt thêm một số thứ).</p>
+    <p>       Trên đây là những kiến thức cơ bản về XAMPP, tạm đủ để làm các bài thực hành liên quan đến lập trình phía server như PHP, mySQL, PHP framework. Tuy nhiên, nếu rảnh nên làm thêm các cấu hình khó hơn một chút liên quan đến XAMPP sau:</p>
+
+    <ol>
+        <li>  Cài đặt XAMPP vào ổ đĩa bất kì (khác ổ đĩa C:\), để không phải lo mất dữ liệu XAMPP, khi hệ điều hành bị trục trặc.</li>
+        <li> Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd-vhosts.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example.</li>
+        <li> Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd-vhosts.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example:8888.</li>
+        <li>  Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example.</li>
+        <li>Cấu hình tên miền ảo (virtual host), thực hiện cấu hình trên tập tin httpd.conf, để có thể mở ứng dụng với URL kiểu như thế này: http://local.example:8888.</li>
+        <li>Tạo thư mục WEBROOT trong ổ đĩa D:\ (nghĩa là thư mục WEBROOT đóng vai trò là htdocs), chuyển các dự án từ XAMPP\htdocs vào trong thư mục WEBROOT. Mục đích là để nếu phải cài đặt lại XAMPP thì các dự án đã tạo trước đó không bị ảnh hưởng.</li>
+    </ol>
+    
+    
+    
+    
+    <pre> Trong cấu hình XAMPP có hai việc nên để ý là:
+    
+    Một là gắn tên miền vào một thư mục, đây là đoạn lệnh (trong tập tin httpd-vhosts.conf hoặc httpd.conf) :
+    
+    VirtualHost *:80
+        DocumentRoot "D:/WEBROOT/bansach"
+        ServerName local.bansach
+    VirtualHost
+</pre>
+<p>    Hai là gắn tên miền vào một địa chỉ IP, đây là đoạn lệnh (trong tập tin C:\Windows\System32\drivers\etc\hosts):</p>
+    <h2>lab 6</h2>
+    <p>Hosting hiểu nôm na là tạo một thư mục và đặt trang web vào trong đó. Thư mục có thể tự tạo ra trên máy web server cục bộ, hoặc thuê từ một máy khác trên Internet. Sau đó liên kết thư mục chứa trang web và tên miền đã đăng kí trên DNS, để khi người dùng gõ tên trang web vào trình duyệt thì sẽ hiển thị được trang web.    </p>
+    <h5>Yêu cầu 1 Điền các thông tin cơ bản web server sẽ dựng?    </h5>
+    <p>– Thông tin phần cứng (CPU, đĩa cứng, RAM):</p>
+    <p>– Hệ điều hành:    </p>
+    <p>– Phần mềm web server:    </p>
+    <p>– Nội dung website: (tạo sẵn một website  đơn giản chỉ gồm một trang web, ví dụ index.html)    </p>
+   
+
 </body>
 </html>
